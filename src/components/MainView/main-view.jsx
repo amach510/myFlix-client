@@ -30,5 +30,23 @@ export const MainView = () => {
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5FoZxavLyV9NpxWm1XGPwVEQ0qAon_B6KIv55nJb3BAjfAX-V",
     }
 ]);
+    // Return statement
+    const [selectedMovie, setselectedMovie] = useState(null);
+    if (movies.length === 0) {
+        return <div>The list is empty!</div>;
+    }
 
+    return (
+        <div>
+            {movies.map((movie) => (
+                    <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                        setselectedMovie(newSelectedMovie);
+                    }}
+                />
+            ))}
+        </div>
+    );
 }
