@@ -1,14 +1,28 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
+import { LoginView } from "../LoginView/login-view";
+import { SignupView } from "../SignupView/signup-view";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    fetch("https://my-flix-database-movie-app-5157085d44be.herokuapp.com/movies")
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = useState(storedUser? storedUser : null);
+    const [token, setToken] = useState(storedToken? storedToken : null);
+    const [movies, setMovies] = useState([]);
+    const [selectedMovie, setselectedMovie] = useState(null);
+    
+    //Connect App to API
+    useEffect(() => {
+    if (!token) {
+        return;
+    }
+
+    fetch("https://my-flix-database-movie-app-5157085d44be.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}`}
+    })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             const moviesFromApi = data.map((movie) => {
                 return {
                     _id: movie._id,
@@ -26,10 +40,23 @@ export const MainView = () => {
             });
             setMovies(moviesFromApi);
         });
-}, []);
-    // Return statement
-    const [selectedMovie, setselectedMovie] = useState(null);
-   
+    }, [token]);
+
+    //Token state variable
+
+    if (!user) {
+        return (
+          <>
+            <LoginView onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }} />
+            or
+            <SignupView />
+          </>
+        );
+      }
+
     //onBackClick
     if (selectedMovie) {
         return (
@@ -53,6 +80,7 @@ export const MainView = () => {
                     }}
                 />
             ))}
+            <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
         </div>
     );
 }
