@@ -67,11 +67,15 @@ export const MainView = () => {
     //onBackClick
     if (selectedMovie) {
         return (
-            <MovieView movie={selectedMovie} onBackClick={() => setselectedMovie(null)} />
+            <Row className="justify-content-md-center">
+                <Col md={8}>
+                    <MovieView movie={selectedMovie} onBackClick={() => setselectedMovie(null)} />
+                </Col>
+            </Row>
         );
     }
 
-    // onClick
+    //onClick
     if (movies.length === 0) {
         return (
             <Row className="justify-content-md-center">
