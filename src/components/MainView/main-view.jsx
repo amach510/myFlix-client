@@ -5,6 +5,7 @@ import { LoginView } from "../LoginView/login-view";
 import { SignupView } from "../SignupView/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 
 export const MainView = () => {
@@ -100,7 +101,7 @@ export const MainView = () => {
                 />
             </Col>
         ))}
-            <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+            <Button className="my-5" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
         </Row>
     );
 }
