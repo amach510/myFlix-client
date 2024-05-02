@@ -30750,8 +30750,9 @@ const MovieView = ({ movie, onBackClick })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                 md: 5,
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image,
-                    alt: "movie cover"
+                    src: movie.ImagePath,
+                    alt: "movie cover",
+                    className: "img-fluid"
                 }, void 0, false, {
                     fileName: "src/components/MovieView/movie-view.jsx",
                     lineNumber: 9,
@@ -30859,6 +30860,7 @@ const MovieView = ({ movie, onBackClick })=>{
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
                         onClick: onBackClick,
+                        variant: "link",
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/MovieView/movie-view.jsx",

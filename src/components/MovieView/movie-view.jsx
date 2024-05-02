@@ -6,7 +6,7 @@ export const MovieView = ({ movie, onBackClick }) => {
     return (
         <Row className="mt-5 justify-content-center">
             <Col md={5} >
-                <img src={movie.image} alt="movie cover"/>
+                <img src={movie.ImagePath} alt="movie cover" className="img-fluid"/>
             </Col>
             <Col md={3}>
                 <div className="my-2">
@@ -25,7 +25,7 @@ export const MovieView = ({ movie, onBackClick }) => {
                     <span>Genre: </span>
                     <span>{movie.Genre}</span>
                 </div>
-                <Button onClick={onBackClick}>Back</Button>
+                <Button onClick={onBackClick} variant="link">Back</Button>
             </Col>
         </Row>
     );
