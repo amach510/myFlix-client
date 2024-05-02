@@ -3,7 +3,9 @@
 }
 
 .card-img {
-    width: 150px; 
+    width: 250px; 
     height: 400px; 
-    object-fit: fill;
+    object-fit: scale-down;
+    margin-left: auto;
+    margin-right: auto;
 }

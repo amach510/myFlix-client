@@ -13189,4 +13189,16 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.card-shadow {
+  box-shadow: 5px 5px 15px 5px #2e2d2d66;
+}
+
+.card-img {
+  object-fit: scale-down;
+  width: 250px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 /*# sourceMappingURL=index.2212206d.css.map */
