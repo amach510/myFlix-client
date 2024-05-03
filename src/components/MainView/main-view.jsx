@@ -3,7 +3,7 @@ import { MovieCard } from "../MovieCard/movie-card";
 import { MovieView } from "../MovieView/movie-view";
 import { LoginView } from "../LoginView/login-view";
 import { SignupView } from "../SignupView/signup-view";
-import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
+import { NavigationBar } from "../NavigationBar/navigation-bar.jsx";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 // import Button from "react-bootstrap/Button";
@@ -56,7 +56,7 @@ export const MainView = () => {
                 setUser(null);
                 }}
             />
-            <Row className="justify-content-md-center mt-5">
+            <Row className="justify-content-md-center">
                 <Routes>
                     <Route
                         path="/signup"
