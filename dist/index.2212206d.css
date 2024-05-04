@@ -13201,4 +13201,16 @@ textarea.form-control-lg {
   margin-left: auto;
   margin-right: auto;
 }
+
+.back-button {
+  color: #fff;
+  background-color: #72deec;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+img {
+  width: 100%;
+}
 /*# sourceMappingURL=index.2212206d.css.map */
