@@ -41583,8 +41583,8 @@ var _rowDefault = parcelHelpers.interopDefault(_row);
 var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
-    const { movieId } = (0, _reactRouter.useParams)();
-    const movies = movies.find((m)=>m.id === movieId);
+    const { movies_Id } = (0, _reactRouter.useParams)();
+    const movie = movies.find((m)=>m.id === movies_Id);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
         className: "mt-5 justify-content-center",
         children: [
@@ -41726,7 +41726,7 @@ const MovieView = ({ movies })=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MovieView, "e2L2DPdRH1AShA7yIOCsYRlzvlI=", false, function() {
+_s(MovieView, "b/MYPNbUX3oSYnJKWC5RZtRHIoE=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];
