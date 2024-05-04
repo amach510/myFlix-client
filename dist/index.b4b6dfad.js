@@ -42210,7 +42210,7 @@ const ProfileView = ({ user, token, movies, setUser })=>{
         });
     };
     const handleDelete = ()=>{
-        if (window.confirm("Are you sure you want to delete your account?")) fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}`, {
+        if (window.confirm("Are you sure you want to delete your account?")) fetch("https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}", {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
