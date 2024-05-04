@@ -7,29 +7,29 @@ import Row from "react-bootstrap/Row";
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
 
-    const movie = movies.find((m) => m.id === movieId);
+    const movies = movies.find((m) => m.id === movieId);
     
     return (
         <Row className="mt-5 justify-content-center">
             <Col md={5} >
-                <img src={movie.ImagePath} alt="movie cover" className="img-fluid"/>
+                <img src={movies.ImagePath} alt="movie cover" className="img-fluid"/>
             </Col>
             <Col md={3}>
                 <div className="my-2">
                     <span>Title: </span>
-                    <span>{movie.Title}</span>
+                    <span>{movies.Title}</span>
                 </div>
                 <div className="my-2">
                     <span>Description: </span>
-                    <span>{movie.Description}</span>
+                    <span>{movies.Description}</span>
                 </div>
                 <div className="my-2">
                     <span>Director: </span>
-                    <span>{movie.Director}</span>
+                    <span>{movies.Director}</span>
                 </div>
                 <div className="my-2">
                     <span>Genre: </span>
-                    <span>{movie.Genre}</span>
+                    <span>{movies.Genre}</span>
                 </div>
                 <Link to={`/`}>
                     <Button>Back</Button>

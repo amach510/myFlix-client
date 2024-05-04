@@ -41584,14 +41584,14 @@ var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
     const { movieId } = (0, _reactRouter.useParams)();
-    const movie = movies.find((m)=>m.id === movieId);
+    const movies = movies.find((m)=>m.id === movieId);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
         className: "mt-5 justify-content-center",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                 md: 5,
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.ImagePath,
+                    src: movies.ImagePath,
                     alt: "movie cover",
                     className: "img-fluid"
                 }, void 0, false, {
@@ -41618,7 +41618,7 @@ const MovieView = ({ movies })=>{
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: movie.Title
+                                children: movies.Title
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
                                 lineNumber: 20,
@@ -41641,7 +41641,7 @@ const MovieView = ({ movies })=>{
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: movie.Description
+                                children: movies.Description
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
                                 lineNumber: 24,
@@ -41664,7 +41664,7 @@ const MovieView = ({ movies })=>{
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: movie.Director
+                                children: movies.Director
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
                                 lineNumber: 28,
@@ -41687,7 +41687,7 @@ const MovieView = ({ movies })=>{
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: movie.Genre
+                                children: movies.Genre
                             }, void 0, false, {
                                 fileName: "src/components/MovieView/movie-view.jsx",
                                 lineNumber: 32,
