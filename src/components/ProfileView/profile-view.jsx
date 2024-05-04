@@ -3,10 +3,10 @@ import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 
 export const ProfileView = ({ user, token, movies, setUser }) => {
-    const [username, setUsername] = useState(user.Username);
-    const [password, setPassword] = useState(user.Password);
-    const [email, setEmail] = useState(user.Email);
-    const [birthday, setBirthday] = useState(user.Birthday);
+    const [username, setUsername] = useState(user.username);
+    const [password, setPassword] = useState(user.password);
+    const [email, setEmail] = useState(user.email);
+    const [birthday, setBirthday] = useState(user.birthday);
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -18,7 +18,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
             Birthday: birthday
         };
 
-        fetch("https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.Username}", {
+        fetch("https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}", {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -37,6 +37,26 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
             });
     };
 
+    const handleDelete = () => {
+        if (window.confirm("Are you sure you want to delete your account?")) {
+            fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(async (response) => {
+                    if (response.ok) {
+                        alert("Account deleted successfully");
+                        setUser(null);
+                    } else {
+                        alert("Failed to delete account");
+                    }
+                })
+                .catch((error) => console.error("Error deleting account:", error));
+        }
+    };
+
     return (
         <Container className="my-5">
             <Row>
@@ -44,9 +64,10 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title>My Profile</Card.Title>
-                            <Card.Text>Username: {user.Username}</Card.Text>
-                            <Card.Text>Email: {user.Email}</Card.Text>
-                            <Card.Text>Birthday: {user.Birthday}</Card.Text>
+                            <Card.Text>Username: {user.username}</Card.Text>
+                            <Card.Text>Email: {user.email}</Card.Text>
+                            <Card.Text>Birthday: {user.birthday}</Card.Text>
+                            <Button variant="danger" onClick={handleDelete}>Delete Account</Button>
                         </Card.Body>
                     </Card>
                 </Col>
