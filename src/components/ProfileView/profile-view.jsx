@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
+import { FavoriteMovies } from "./favorite-movie";
 
 export const ProfileView = ({ user, token, movies, setUser }) => {
     const [username, setUsername] = useState(user.username);
     const [password, setPassword] = useState(user.password);
     const [email, setEmail] = useState(user.email);
     const [birthday, setBirthday] = useState(user.birthday);
+
+    const favoriteMovieList = user.FavoriteMovies?.map( favoriteMovie => (
+        movies.find(movie => (movie._id === favoriteMovie))
+    ));
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -110,6 +115,9 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                         <Button type="submit" onClick={handleUpdate} className="mt-2">Update</Button>
                     </Form>
                 </Col>
+            </Row>
+            <Row>
+                <FavoriteMovies favoriteMovieList={favoriteMovieList}/>
             </Row>
         </Container>
     );
