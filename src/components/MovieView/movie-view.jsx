@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -7,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, user, token }) => {
+export const MovieView = ({ movies, username, token }) => {
     const { movieId } = useParams();
 
     const movie = movies.find((movie) => movie._id === movieId);
@@ -16,7 +15,7 @@ export const MovieView = ({ movies, user, token }) => {
             if (!token) {
             return;
             }
-            fetch("https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user}/movies/${movie._id}", {
+            fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${username}/movies/${movie._id}`, {
                     method: 'POST',
                     headers: { 
                     "Content-Type": "application/json",
@@ -57,7 +56,7 @@ export const MovieView = ({ movies, user, token }) => {
                     <Link to={`/`}>
                         <Button>Back</Button>
                     </Link>
-                    <Link to={`/movies/${movie._id}`}>
+                    <Link to={`/users/${username}/movies/${movie._id}`}>
                         <Button 
                             className="add-to-favorite"
                             variant="warning"
