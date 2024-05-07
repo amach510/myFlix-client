@@ -1,26 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
-import { FavoriteMovies } from "./favorite-movie";
+// import { FavoriteMovies } from "./favorite-movie";
 
 export const ProfileView = ({ user, token, movies, setUser }) => {
     const [username, setUsername] = useState(user.username);
     const [password, setPassword] = useState(user.password);
     const [email, setEmail] = useState(user.email);
     const [birthday, setBirthday] = useState(user.birthday);
+    const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-    const favoriteMovieList = user.FavoriteMovies?.map( favoriteMovie => (
-        movies.find(movie => (movie._id === favoriteMovie))
-    ));
+    useEffect(() => {
+        setFavoriteMovies(user.favoriteMovies);
+    }, [user.favoriteMovies]);
 
     const handleUpdate = (event) => {
         event.preventDefault();
-
         const data = {
             username: username,
             password: password,
             email: email,
-            birthday: birthday
+            birthday: birthday,
+            favoriteMovies: favoriteMovies
         };
 
         fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}`, {
@@ -31,15 +32,34 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                 Authorization: `Bearer ${token}`
             }
         })
-            .then( async (response) => {
-                if (response.ok) {
-                    response.json();
-                    alert("Update was successful");
-                    window.location.reload();
-                } else {
-                    alert("Update failed")
-                }
-            });
+        .then(async (response) => {
+            if (response.ok) {
+                response.json();
+                alert("Update was successful");
+                window.location.reload();
+            } else {
+                alert("Update failed")
+            }
+        });
+    };
+
+    const toggleFavorite = (movieId) => {
+        fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}/movies/${movieId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                const updatedFavorites = favoriteMovies.filter(id => id !== movieId);
+                setFavoriteMovies(updatedFavorites);
+                alert("Movie removed from favorites successfully");
+            } else {
+                alert("Failed to remove movie from favorites");
+            }
+        })
+        .catch(error => console.error("Error removing movie from favorites:", error));
     };
 
     const handleDelete = () => {
@@ -72,6 +92,25 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             <Card.Text>Username: {user.username}</Card.Text>
                             <Card.Text>Email: {user.email}</Card.Text>
                             <Card.Text>Birthday: {user.birthday}</Card.Text>
+                            <Card.Text>
+                                Favorite Movies:
+                                <Row>
+                                    {favoriteMovies.map((movieId) => {
+                                        const movie = movies.find(movie => movie._id === movieId);
+                                        return (
+                                            <Col key={movie._id} xs={12} md={6} lg={4}>
+                                                <Card className="my-2">
+                                                    <Card.Img variant="top" src={movie.ImagePath} />
+                                                    <Card.Body>
+                                                        <Card.Title>{movie.Title}</Card.Title>
+                                                        <Button variant="danger" onClick={() => toggleFavorite(movie._id)}>Remove from Favorites</Button>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+                            </Card.Text>
                             <Button variant="danger" onClick={handleDelete}>Delete Account</Button>
                         </Card.Body>
                     </Card>
@@ -84,7 +123,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            minLength="3"
+                            minLength={5}
                             />
                         </Form.Group>
                         <Form.Group controlId="formPassword">
@@ -94,6 +133,7 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="enter password"
                             required
+                            minLength={5}
                             />
                         </Form.Group>
                         <Form.Group controlId="formEmail">
@@ -115,9 +155,6 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                         <Button type="submit" onClick={handleUpdate} className="mt-2">Update</Button>
                     </Form>
                 </Col>
-            </Row>
-            <Row>
-                <FavoriteMovies favoriteMovieList={favoriteMovieList}/>
             </Row>
         </Container>
     );
