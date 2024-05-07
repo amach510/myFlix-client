@@ -42667,6 +42667,6 @@ $RefreshReg$(_c, "FavoriteMovies");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../MovieCard/movie-card":"dg3Ls","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"bR9B9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3u4yi","react":"21dqq","react-router-dom":"9xmpe"}]},["e0z7w","bsOQM","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"bR9B9","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3u4yi","react":"21dqq","../MovieCard/movie-card":"dg3Ls","react-router-dom":"9xmpe"}]},["e0z7w","bsOQM","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
