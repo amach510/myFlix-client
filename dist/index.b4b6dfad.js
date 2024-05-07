@@ -42233,10 +42233,10 @@ const ProfileView = ({ user, token, movies, setUser })=>{
     const handleUpdate = (event)=>{
         event.preventDefault();
         const data = {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
+            username: username,
+            password: password,
+            email: email,
+            birthday: birthday
         };
         fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}`, {
             method: "PUT",
