@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
-// import { FavoriteMovies } from "./favorite-movie";
 
 export const ProfileView = ({ user, token, movies, setUser }) => {
     const [username, setUsername] = useState(user.username);
