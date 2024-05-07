@@ -13,7 +13,8 @@ export const MovieView = ({ movies, username, token }) => {
     
     const addFavoriteMovie = () => {
             if (!token) {
-            return;
+                alert('Please log in to add movies to favorites.');
+                return;
             }
             fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${username}/movies/${movie._id}`, {
                     method: 'POST',
