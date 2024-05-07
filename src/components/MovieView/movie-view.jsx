@@ -7,6 +7,9 @@ import Container from "react-bootstrap/Container";
 import "./movie-view.scss";
 
 export const MovieView = ({ movies, username, token }) => {
+    
+    console.log("Token in MovieView component:", token);
+    
     const { movieId } = useParams();
 
     const movie = movies.find((movie) => movie._id === movieId);
