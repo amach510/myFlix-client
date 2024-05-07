@@ -27578,60 +27578,7 @@ const MainView = ()=>{
         lineNumber: 53,
         columnNumber: 9
     }, undefined);
-}; //     if (!user) {
- //         return (
- //             <Row className="justify-content-md-center mt-5">
- //                 <Col md={5}>
- //                     <LoginView 
- //                         onLoggedIn={(user, token) => {
- //                             setUser(user);
- //                             setToken(token);
- //                         }}
- //                     />
- //                     or
- //                     <SignupView />
- //                 </Col>
- //             </Row>
- //         );
- //     }
- //     //onBackClick
- //     if (selectedMovie) {
- //         return (
- //             <Row className="justify-content-md-center">
- //                 <Col md={8}>
- //                     <MovieView movie={selectedMovie} onBackClick={() => setselectedMovie(null)} />
- //                 </Col>
- //             </Row>
- //         );
- //     }
- //     //onClick
- //     if (movies.length === 0) {
- //         return (
- //             <Row className="justify-content-md-center">
- //                 <Col>
- //                     <p>The list is empty!</p>
- //                     <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
- //                 </Col>
- //             </Row>
- //         );
- //     }
- //     return (
- //         <Row className="justify-content-md-center">
- //             {movies.map((movie) => (
- //                 <Col md={3} className="mb-5" key={movie._id}>
- //                 <MovieCard
- //                     movie={movie}
- //                     onMovieClick={(newSelectedMovie) => {
- //                         setselectedMovie(newSelectedMovie);
- //                     }}
- //                     style={img={height:"300px"}}
- //                 />
- //             </Col>
- //         ))}
- //             <Button className="my-5" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
- //         </Row>
- //     );
- // }
+};
 _s(MainView, "/WjM596oF0v9y9togmgRao9XFtw=");
 _c = MainView;
 var _c;
