@@ -4,27 +4,30 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie, token, user }) => {
-    const addToFavorites = () => {
-        fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to add to favorites');
-            }
-            alert('Added to favorites successfully!');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to add to favorites. Please try again.');
-        });
-    };
-
+export const MovieCard = ({ movie, token, user, setUser }) => {
+  const addToFavorites = () => {
+    fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to add to favorites');
+        }
+        return response.json(); // Parse response JSON
+    })
+    .then(updatedUser => {
+        setUser(updatedUser); // Update user state with updated user object
+        alert('Added to favorites successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to add to favorites. Please try again.');
+    });
+};
     return (
         <Card className="h-100 mt-5 card-shadow">
             <Card.Img variant="top" src={movie.ImagePath} />

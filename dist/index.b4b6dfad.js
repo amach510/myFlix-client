@@ -27511,7 +27511,8 @@ const MainView = ()=>{
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                 movie: movie,
                                                 token: token,
-                                                user: user
+                                                user: user,
+                                                setUser: setUser
                                             }, void 0, false, {
                                                 fileName: "src/components/MainView/main-view.jsx",
                                                 lineNumber: 123,
@@ -27607,7 +27608,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _movieCardScss = require("./movie-card.scss");
-const MovieCard = ({ movie, token, user })=>{
+const MovieCard = ({ movie, token, user, setUser })=>{
     const addToFavorites = ()=>{
         fetch(`https://my-flix-database-movie-app-5157085d44be.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
             method: "POST",
@@ -27617,6 +27618,9 @@ const MovieCard = ({ movie, token, user })=>{
             }
         }).then((response)=>{
             if (!response.ok) throw new Error("Failed to add to favorites");
+            return response.json(); // Parse response JSON
+        }).then((updatedUser)=>{
+            setUser(updatedUser); // Update user state with updated user object
             alert("Added to favorites successfully!");
         }).catch((error)=>{
             console.error("Error:", error);
@@ -27631,7 +27635,7 @@ const MovieCard = ({ movie, token, user })=>{
                 src: movie.ImagePath
             }, void 0, false, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 30,
+                lineNumber: 33,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
@@ -27640,14 +27644,14 @@ const MovieCard = ({ movie, token, user })=>{
                         children: movie.Title
                     }, void 0, false, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 32,
+                        lineNumber: 35,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                         children: movie.Director.Name
                     }, void 0, false, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 33,
+                        lineNumber: 36,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27660,12 +27664,12 @@ const MovieCard = ({ movie, token, user })=>{
                                     children: "Open"
                                 }, void 0, false, {
                                     fileName: "src/components/MovieCard/movie-card.jsx",
-                                    lineNumber: 36,
+                                    lineNumber: 39,
                                     columnNumber: 23
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/MovieCard/movie-card.jsx",
-                                lineNumber: 35,
+                                lineNumber: 38,
                                 columnNumber: 19
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -27674,25 +27678,25 @@ const MovieCard = ({ movie, token, user })=>{
                                 children: "Add to Favorites"
                             }, void 0, false, {
                                 fileName: "src/components/MovieCard/movie-card.jsx",
-                                lineNumber: 38,
+                                lineNumber: 41,
                                 columnNumber: 19
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 34,
+                        lineNumber: 37,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 31,
+                lineNumber: 34,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MovieCard/movie-card.jsx",
-        lineNumber: 29,
+        lineNumber: 32,
         columnNumber: 9
     }, undefined);
 };
