@@ -31,10 +31,12 @@ export const MovieCard = ({ movie, token, user }) => {
             <Card.Body>
                 <Card.Title>{movie.Title}</Card.Title>
                 <Card.Text>{movie.Director.Name}</Card.Text>
-                <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                    <Button variant="link">Open</Button>
-                </Link>
-                <Button variant="primary" onClick={addToFavorites}>Add to Favorites</Button>
+                <div className="button-container">
+                  <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+                      <Button variant="primary">Open</Button>
+                  </Link>
+                  <Button variant="primary" onClick={addToFavorites}>Add to Favorites</Button>
+                </div>
             </Card.Body>
         </Card>
     );

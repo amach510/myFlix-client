@@ -27650,28 +27650,37 @@ const MovieCard = ({ movie, token, user })=>{
                         lineNumber: 33,
                         columnNumber: 17
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                        to: `/movies/${encodeURIComponent(movie._id)}`,
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                            variant: "link",
-                            children: "Open"
-                        }, void 0, false, {
-                            fileName: "src/components/MovieCard/movie-card.jsx",
-                            lineNumber: 35,
-                            columnNumber: 21
-                        }, undefined)
-                    }, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "button-container",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                to: `/movies/${encodeURIComponent(movie._id)}`,
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                    variant: "primary",
+                                    children: "Open"
+                                }, void 0, false, {
+                                    fileName: "src/components/MovieCard/movie-card.jsx",
+                                    lineNumber: 36,
+                                    columnNumber: 23
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/MovieCard/movie-card.jsx",
+                                lineNumber: 35,
+                                columnNumber: 19
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                variant: "primary",
+                                onClick: addToFavorites,
+                                children: "Add to Favorites"
+                            }, void 0, false, {
+                                fileName: "src/components/MovieCard/movie-card.jsx",
+                                lineNumber: 38,
+                                columnNumber: 19
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/MovieCard/movie-card.jsx",
                         lineNumber: 34,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                        variant: "primary",
-                        onClick: addToFavorites,
-                        children: "Add to Favorites"
-                    }, void 0, false, {
-                        fileName: "src/components/MovieCard/movie-card.jsx",
-                        lineNumber: 37,
                         columnNumber: 17
                     }, undefined)
                 ]

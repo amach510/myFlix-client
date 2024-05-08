@@ -13202,6 +13202,17 @@ textarea.form-control-lg {
   margin-right: auto;
 }
 
+.button-container {
+  justify-content: space-between;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.button-container button {
+  flex: 1;
+  margin-right: 1rem;
+}
+
 .back-button {
   color: #fff;
   background-color: #72deec;
