@@ -53,6 +53,8 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
             if (response.ok) {
                 const updatedFavorites = favoriteMovies.filter(id => id !== movieId);
                 setFavoriteMovies(updatedFavorites);
+                const updatedUser = { ...user, favoriteMovies: updatedFavorites };
+                setUser(updatedUser);
                 alert("Movie removed from favorites successfully");
             } else {
                 alert("Failed to remove movie from favorites");
