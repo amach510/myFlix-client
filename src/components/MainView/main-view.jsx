@@ -15,9 +15,8 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
-    const [filter, setFilter] = useState(""); // State for movie filter
+    const [filter, setFilter] = useState("");
 
-    //Connect App to API
     useEffect(() => {
     if (!token) {
         return;
@@ -47,7 +46,6 @@ export const MainView = () => {
         });
     }, [token]);
         
-    // Filter movies based on filter criteria
     const filteredMovies = movies.filter(movie =>
         movie.Title.toLowerCase().includes(filter.toLowerCase())
     );
@@ -121,7 +119,6 @@ export const MainView = () => {
                                     <Col>The list is empty</Col>
                                 ) : (
                                     <>
-                                        {/* Movie Filter Input */}
                                         <Col md={12} className="mb-3">
                                             <input
                                                 type="text"
@@ -130,7 +127,6 @@ export const MainView = () => {
                                                 onChange={(e) => setFilter(e.target.value)}
                                             />
                                         </Col>
-                                        {/* Movie Cards */}
                                         {filteredMovies.map((movie) => (
                                             <Col className="mb-5" key={movie._id} md={3}>
                                                 <MovieCard movie={movie} token={token} user={user} setUser={setUser}/>
