@@ -99,12 +99,12 @@ export const ProfileView = ({ user, token, movies, setUser }) => {
                                     {favoriteMovies.map((movieId) => {
                                         const movie = movies.find(movie => movie._id === movieId);
                                         return (
-                                            <Col key={movie._id} xs={12} md={6} lg={4}>
+                                            <Col key={movieId} xs={12} md={6} lg={4}>
                                                 <Card className="my-2">
                                                     <Card.Img variant="top" src={movie.ImagePath} />
                                                     <Card.Body>
                                                         <Card.Title>{movie.Title}</Card.Title>
-                                                        <Button variant="danger" onClick={() => toggleFavorite(movie._id)}>Remove from Favorites</Button>
+                                                        <Button variant="danger" onClick={() => toggleFavorite(movieId)}>Remove from Favorites</Button>
                                                     </Card.Body>
                                                 </Card>
                                             </Col>

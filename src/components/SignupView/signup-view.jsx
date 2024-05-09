@@ -46,7 +46,6 @@ export const SignupView = () => {
               minLength="3"
             />
           </Form.Group>
-    
           <Form.Group controlId="signUpFormPassword">
             <Form.Label>Password:</Form.Label>
             <Form.Control
