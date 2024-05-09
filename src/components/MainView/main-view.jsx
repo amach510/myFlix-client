@@ -15,6 +15,7 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser? storedUser : null);
     const [token, setToken] = useState(storedToken? storedToken : null);
     const [movies, setMovies] = useState([]);
+    const [filter, setFilter] = useState(""); // State for movie filter
 
     //Connect App to API
     useEffect(() => {
@@ -45,6 +46,11 @@ export const MainView = () => {
             setMovies(moviesFromApi);
         });
     }, [token]);
+        
+    // Filter movies based on filter criteria
+    const filteredMovies = movies.filter(movie =>
+        movie.Title.toLowerCase().includes(filter.toLowerCase())
+    );
 
     return (
         <BrowserRouter>
@@ -105,7 +111,7 @@ export const MainView = () => {
                             </>
                         }
                     />
-                    <Route 
+                    <Route
                         path="/"
                         element={
                             <>
@@ -115,7 +121,17 @@ export const MainView = () => {
                                     <Col>The list is empty</Col>
                                 ) : (
                                     <>
-                                        {movies.map((movie) => (
+                                        {/* Movie Filter Input */}
+                                        <Col md={12} className="mb-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Search movies..."
+                                                value={filter}
+                                                onChange={(e) => setFilter(e.target.value)}
+                                            />
+                                        </Col>
+                                        {/* Movie Cards */}
+                                        {filteredMovies.map((movie) => (
                                             <Col className="mb-5" key={movie._id} md={3}>
                                                 <MovieCard movie={movie} token={token} user={user} setUser={setUser}/>
                                             </Col>
