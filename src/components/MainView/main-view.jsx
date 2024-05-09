@@ -7,7 +7,6 @@ import { NavigationBar } from "../NavigationBar/navigation-bar.jsx";
 import { ProfileView } from "../ProfileView/profile-view.jsx";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import Button from "react-bootstrap/Button";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
