@@ -12,7 +12,6 @@ export const MovieView = ({ movies }) => {
 
     const movie = movies.find((movie) => movie._id === movieId);
     
-
     return (
         <Container className="content">
             <Row className="my-5 justify-content-center">
