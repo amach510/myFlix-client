@@ -1,7 +1,6 @@
 # myFlix-client
 
 ## Project Description:
-
 This React application serves as the frontend for the myFlix API/ Movie API project, delivering a dynamic and engaging user interface to access movie details. Developed as a single-page application, it enriches user interaction by enabling responsive responses and live updates without requiring page refreshes.
 
 ## Key Features
